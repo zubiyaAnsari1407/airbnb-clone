@@ -1,10 +1,10 @@
-const express = require("express");
+  const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const {listingSchema } = require("../schema.js");  //joi schema
 const Listing = require("../models/listing.js");
-const {isLoggedIn} = require("../middleware.js")
+const {isLoggedIn} = require("../middleware.js");
 
 //joi validation part for listing
 const validateListing = (req,res,next)=>{
@@ -31,17 +31,20 @@ router.get("/new", isLoggedIn,
      (req,res) =>{
     
     res.render("./listings/new.ejs")
-})
+});
 
 //show route 
 router.get("/:id", 
     wrapAsync(async (req,res)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id).populate("reviews")
+    const listing = await Listing.findById(id)
+    .populate("reviews")
+    .populate("owner");
     if(!listing){
         req.flash("error","Listing you requested for does not exist")
         res.redirect("/listings")
     }
+    console.log(listing);
     res.render("./listings/show.ejs", { listing })
 }));
 
@@ -51,9 +54,10 @@ router.post("/",
     isLoggedIn,
     wrapAsync( async (req, res,next) => {
        const newListing = new Listing(req.body.listing);
+       newListing.owner = req.user._id;
     await newListing.save();
     req.flash("success","New Listing Created!");
-    res.redirect("/listings");
+    res.redirect("/login");
 
 }));
 
@@ -76,7 +80,11 @@ router.put("/:id",
     wrapAsync(async (req,res)=>{
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id,{...req.body.listing});
-       req.flash("success"," Listing Updated!");
+    let listing = await Listing.findById(id);
+    if(!listing.owner.equals(currUser._id)){
+             req.flash("error","You dont have permission to edit ");
+
+    }
     res.redirect(`/listings/${ id }`);
 }));
 
