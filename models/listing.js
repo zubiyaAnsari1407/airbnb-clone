@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js")
 
-const defaultImg =
-  "https://images.unsplash.com/photo-1625505826533-5c80aca7d157";
+// const defaultImg =
+//   "https://images.unsplash.com/photo-1625505826533-5c80aca7d157";
 
 const listingSchema = new Schema({
   title: {
@@ -20,9 +20,10 @@ const listingSchema = new Schema({
 
     url: {
     type:String,
-      default: defaultImg,
-      set: (v) => (v === "" ? defaultImg : v),
+      // default: defaultImg,
+      // set: (v) => (v === "" ? defaultImg : v),
     },
+   
   },
 
   price:  Number,
@@ -38,7 +39,15 @@ const listingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
 },
-  
+geometry: {
+    type: {
+        type: String,
+        enum: ["Point"],
+    },
+    coordinates: {
+        type: [Number],
+    },
+},
 });
 listingSchema.post("findOneAndDelete", async (listing) => {
     if (listing) {

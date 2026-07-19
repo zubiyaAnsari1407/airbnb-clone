@@ -118,6 +118,7 @@ min-height: 100vh;
 /* show page  */
 .show-img{
     height: 30vh;
+    /* width: 30vh; */
  
 }
 .btns{
@@ -127,4 +128,10 @@ min-height: 100vh;
 .show-card{
     padding-right: 0;
     padding-left: 0;
+}
+
+#map { 
+    height:400px;
+    width: 80vh;
+
 }

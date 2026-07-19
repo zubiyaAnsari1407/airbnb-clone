@@ -89,7 +89,7 @@ const sampleListings = [
       "Indulge in luxury living with panoramic city views from this stunning penthouse apartment.",
     image: {
       filename: "listingimage",
-      url: "https://media.istockphoto.com/id/1328582020/photo/modern-luxurious-villa-with-garden-and-swimming-pool-night-scene.jpg?s=1024x1024&w=is&k=20&c=8zgW-iQ02lpCTQcBQE5gw4G5_jNQD1qpgQJQnnctNCs=",
+      url: "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
     },
     price: 3500,
     location: "Los Angeles",
