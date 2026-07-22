@@ -135,3 +135,159 @@ min-height: 100vh;
     width: 80vh;
 
 }
+
+/* ============================================
+   RESPONSIVE FIXES — paste at the END of style.css
+   Desktop (992px+) stays untouched.
+   ============================================ */
+
+@media (max-width: 767.98px) {
+
+    /* ---- NAVBAR ---- */
+    .navbar{
+        height: auto;
+        padding: 0.5rem 0;
+    }
+
+    /* ---- SHOW PAGE ---- */
+    .col-8.offset-3{
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 0 1rem;
+    }
+
+    .card.col-6.offset-3.show-card.listing-card{
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .show-img{
+        height: 25vh;
+        width: 100% !important;
+        object-fit: cover;
+    }
+
+    .btns{
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+
+    .btn.btn-dark.col-1.offset-3.edit-btn{
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .btns form button{
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    /* Review cards */
+    .card.col-5.ms-3.mb-3{
+        width: 90% !important;
+        margin-left: 0.5rem !important;
+    }
+
+    /* Map section */
+    .col-md-10.mx-auto.mb-3{
+        width: 100% !important;
+        padding: 0 1rem;
+    }
+
+    .col-md-10.mx-auto.mb-3 h3{
+        margin-left: 0 !important;
+        text-align: center !important;
+        font-size: 1.2rem;
+    }
+
+    #map {
+        width: 100% !important;
+        height: 300px;
+    }
+
+    /* ---- EDIT & NEW LISTING FORM ---- */
+    .col-8.offset-2{
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 0 1rem;
+    }
+
+    /* ---- INDEX PAGE (filters + cards) ---- */
+    #filters{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+    }
+
+    .filter{
+        margin-right: 1rem;
+        margin-top: 1rem;
+        flex-shrink: 0;
+    }
+
+    .tax-toggle{
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+
+    .card-img-top{
+        height: 14rem !important;
+    }
+
+    /* ---- FOOTER ---- */
+    .f-info{
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+/* ---- TABLET ---- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .col-8.offset-3{
+        width: 90% !important;
+        margin-left: 5% !important;
+    }
+
+    .card.col-6.offset-3.show-card.listing-card{
+        width: 80% !important;
+        margin-left: 10% !important;
+    }
+
+    .col-8.offset-2{
+        width: 90% !important;
+        margin-left: 5% !important;
+    }
+
+    #map {
+        width: 100% !important;
+    }
+
+    .col-md-10.mx-auto.mb-3 h3{
+        margin-left: 2rem !important;
+    }
+
+    .card-img-top{
+        height: 16rem !important;
+    }
+}
+
+/* ---- FLASH MESSAGES (success/error alerts) ---- */
+@media (max-width: 767.98px) {
+    .alert.alert-success.col-6.offset-3,
+    .alert.alert-danger.col-6.offset-3{
+        width: 90% !important;
+        margin-left: 5% !important;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .alert.alert-success.col-6.offset-3,
+    .alert.alert-danger.col-6.offset-3{
+        width: 70% !important;
+        margin-left: 15% !important;
+    }
+}

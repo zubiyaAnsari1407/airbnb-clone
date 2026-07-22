@@ -1,11 +1,9 @@
 <% layout("/layouts/boilerplate") %>
-   
 
 <script>
     const mapToken = "<%= process.env.MAP_TOKEN %>";
     const listing = <%- JSON.stringify(listing) %>;
 </script>
-
 
     <%#Card Section %>
 <div class="row mt-3">
@@ -100,15 +98,15 @@
          <h5 class="card-title">@<%= review.author.username %></h5>
          <p class="starability-result card-text"
    data-rating="<%= review.rating %>"> </p>
-         <p class="card-text"><%= review.comment %></p>
-  
+         <p class="card-text mb-1"><%= review.comment %></p>
       </div>
-      <form class="mb-3" method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-   
-          <button class="btn btn-sm btn-dark mt-3">Delete</button>
-       
-      </form>
-   </div>
+      
+      <% if (currUser && review.author.equals(currUser._id)) { %>
+<form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+    <button class="btn btn-sm btn-dark mt-3 mb-3">Delete</button>
+</form>
+<% } %>
+    </div>
 <%} %>
 </div>
 <% } %>

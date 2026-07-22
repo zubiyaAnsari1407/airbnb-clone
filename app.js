@@ -1,3 +1,4 @@
+
 if(process.env.NODE_ENV !== "production"){
 require('dotenv').config()
 }
@@ -47,9 +48,7 @@ async function  main()
 }
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    crypto: {
-        secret: process.env.SECRET,
-    },
+
     touchAfter: 24 * 3600,
 });
 
@@ -71,9 +70,6 @@ const sessionOptions = {
 // app.get("/",(req,res)=>{
 //     res.send("Hello,I am root");
 // })
-
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -100,10 +96,11 @@ app.use((req,res,next)=>{
 //    res.send(registeredUser);
 // })
 
-app.use("/listings",listingRouter);
-app.use("/listings/:id/reviews",reviewRouter);
-app.use("/",userRouter)
 
+
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 app.all("*", (req , res, next)=>{
     next(new ExpressError(404,"Page Not Found !"));
